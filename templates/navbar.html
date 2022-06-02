@@ -1,0 +1,63 @@
+{% load static %}
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-info">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+ 
+
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="https://github.com/mustafatacyildiz">Mustafa BLOG</a>
+          </li>
+        <li class="nav-item active">
+            {% comment %} {% url 'students' %} {% endcomment %}
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="https://lms.clarusway.com/mod/page/view.php?id=15443">About</a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      {% if request.user.is_authenticated %}
+
+      {% if request.user.is_superuser or request.user.is_active or request.user.is_staff  %}
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+      </li>
+      {% endif %}
+
+      <li class="nav-item active">
+        {% comment %} {% url 'logout' %} {% endcomment %}
+        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+      </li>
+
+      <li class="nav-item active">
+        {% comment %} {% url 'logout' %} {% endcomment %}
+        <a class="nav-link" href="">New Post</a>
+      </li>
+      {% else %}
+
+      <li class="nav-item active">
+        {% comment %} {% url 'user_login' %} {% endcomment %}
+        <a class="nav-link" href="{% url 'user_login' %}">Log In</a>
+      </li>
+
+      <li class="nav-item active">
+        {% comment %} {% url 'register' %} {% endcomment %}
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      
+      {% endif %}
+
+
+
+    </ul>
+  </div>
+</nav>
