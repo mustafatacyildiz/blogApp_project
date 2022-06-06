@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="card-group"></div>
+  <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src='{{ post.image }}' alt="Card image cap" width="50px" >
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content }}</p>
+      </div>
+  </div>
+</div>
+    <br>
+<a href="{% url 'update' post.id %}"><button>Edit</button></a>
+<a href="{% url 'delete' post.id %}"><button>Delete</button></a>
+    
+{% endblock content %}
